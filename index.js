@@ -4,7 +4,7 @@ const express = require('express');
 const connection = require('./src/database');
 
 const Patient = require('./src/models/patient');
-const patientRoutes = require('./src/routes/patientRoutes');
+const patientRoutes = require('./src/routes/patients/patientRoutes');
 
 const app = express();
 app.use(express.json())
