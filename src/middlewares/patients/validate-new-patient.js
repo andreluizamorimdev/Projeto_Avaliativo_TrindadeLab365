@@ -1,5 +1,5 @@
 const Yup = require("yup");
-const Patient = require("../models/patient");
+const Patient = require("../../models/patient");
 
 const patientSchema = Yup.object().shape({
     full_name: Yup.string().required('O nome completo é obrigatório'),
