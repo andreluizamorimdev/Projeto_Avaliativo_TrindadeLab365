@@ -40,7 +40,7 @@ const Patient = connection.define('patient', {
         type: Sequelize.STRING
     },
     attendance_status: {
-        type: Sequelize.ENUM("AGUARDANDO_ATENDIMENTO", "EM_ATENDIMENTO", "ATENDIDO", "NÃO_ATENDIDO")
+        type: Sequelize.ENUM("AGUARDANDO_ATENDIMENTO", "EM_ATENDIMENTO", "ATENDIDO", "NAO_ATENDIDO")
     },
     total_attendances: {
         type: Sequelize.INTEGER,

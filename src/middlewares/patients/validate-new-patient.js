@@ -2,7 +2,7 @@ const Yup = require("yup");
 const Patient = require("../../models/patient");
 
 const patientSchema = Yup.object().shape({
-    full_name: Yup.string().required('O nome completo é obrigatório'),
+    full_name: Yup.string().required('O nome completo é obrigatório').matches(/^[a-zA-Z\s]+$/, 'O nome completo deve conter apenas letras e espaços'),
     gender: Yup.string().oneOf(['FEMININO', 'MASCULINO', 'OUTRO'], 'O gênero deve ser FEMININO, MASCULINO ou OUTRO'),
     birth_date: Yup.date().required('A data de nascimento é obrigatória').typeError('A data de nascimento deve ser uma data válida'),
     cpf: Yup.string().required('O CPF é obrigatório').matches(/^\d{11}$/, 'O CPF deve conter 11 dígitos').test('unique', 'Este paciente já foi cadastrado', async (value) => {
@@ -14,7 +14,7 @@ const patientSchema = Yup.object().shape({
     allergies_list: Yup.string(),
     specific_care_list: Yup.string(),
     health_insurance_plan: Yup.string(),
-    attendance_status: Yup.string().oneOf(['AGUARDANDO_ATENDIMENTO', 'EM_ATENDIMENTO', 'ATENDIDO', 'NÃO_ATENDIDO'], 'O status de atendimento deve ser AGUARDANDO_ATENDIMENTO, EM_ATENDIMENTO, ATENDIDO ou NÃO_ATENDIDO'),
+    attendance_status: Yup.string().oneOf(['AGUARDANDO_ATENDIMENTO', 'EM_ATENDIMENTO', 'ATENDIDO', 'NAO_ATENDIDO'], 'O status de atendimento deve ser AGUARDANDO_ATENDIMENTO, EM_ATENDIMENTO, ATENDIDO ou NAO_ATENDIDO'),
     total_attendances: Yup.number().integer().min(0).default(0), 
 
 });
