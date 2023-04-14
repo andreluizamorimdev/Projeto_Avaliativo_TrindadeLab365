@@ -14,6 +14,6 @@ patientRoutes.post('/api/pacientes', validateNewPatient, createPatient);
 
 patientRoutes.put('/api/pacientes/:id', validateUpdatePatient, updatePatient);
 
-patientRoutes.get('/api/pacientes', findAllPatient);
+patientRoutes.get('/api/pacientes', findAllPatient); 
 
 module.exports = patientRoutes;

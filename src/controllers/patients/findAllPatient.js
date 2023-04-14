@@ -20,11 +20,9 @@ async function findAllPatient (request, response) {
                     }  
                 }
             );
-    
             response.json(patients);
         } else {
             const patients = await Patient.findAll();
-    
             response.json(patients);
         }
         
