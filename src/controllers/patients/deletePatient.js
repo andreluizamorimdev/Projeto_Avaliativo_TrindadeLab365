@@ -11,7 +11,7 @@ async function deletePatient(request, response) {
         }
 
         await Patient.destroy({ where: { id: id } });
-        response.status(204); 
+        response.status(204).json(); 
 
     } catch (error) {
         console.log(error);
