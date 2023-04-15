@@ -2,10 +2,10 @@ const Yup = require("yup");
 const Patient = require("../../models/patient");
 
 const patientSchema = Yup.object().shape({
-    full_name: Yup.string().required('O nome completo é obrigatório').matches(/^[a-zA-Z\s]+$/, 'O nome completo deve conter apenas letras e espaços'),
+    full_name: Yup.string().required('O nome completo é obrigatório').matches(/^[a-zA-Z\u00C0-\u017F\s]+$/, 'O nome completo deve conter apenas letras e espaços'),
     gender: Yup.string().oneOf(['FEMININO', 'MASCULINO', 'OUTRO'], 'O gênero deve ser FEMININO, MASCULINO ou OUTRO'),
     birth_date: Yup.date().required('A data de nascimento é obrigatória').typeError('A data de nascimento deve ser uma data válida'),
-    cpf: Yup.string().required('O CPF é obrigatório').matches(/^\d{11}$/, 'O CPF deve conter 11 dígitos').test('unique', 'Este paciente já foi cadastrado', async (value) => {
+    cpf: Yup.string().required('O CPF é obrigatório').matches(/^\d{11}$/, 'O CPF deve conter apenas números e ter 11 dígitos').test('unique', 'Este paciente já foi cadastrado', async (value) => {
         const patient = await Patient.findOne({ where: { cpf: value } });
         return !patient;
     }),

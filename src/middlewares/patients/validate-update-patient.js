@@ -1,13 +1,12 @@
 const Yup = require('yup');
-const Patient = require("../../models/patient");
 
 const updatePatientSchema = Yup.object().shape({
-    full_name: Yup.string().optional().matches(/^[a-zA-Z\s]+$/, 'O nome completo deve conter apenas letras e espaços'),
+    full_name: Yup.string().optional().matches(/^[a-zA-Z\u00C0-\u017F\s]+$/, 'O nome completo deve conter apenas letras e espaços'),
     gender: Yup.string().optional().oneOf(['MASCULINO', 'FEMININO'], 'O gênero deve ser MASCULINO ou FEMININO'),
     birth_date: Yup.date().optional().typeError('A data de nascimento deve ser uma data válida'),
-    cpf: Yup.string().optional().matches(/^\d{11}$/, 'O CPF deve conter 11 dígitos'),
+    cpf: Yup.string().optional().matches(/^\d{11}$/, 'O CPF deve conter apenas números e ter 11 dígitos'),
     phone_number: Yup.string().optional().matches(/^\(\d{2}\)\s\d{4,5}\-\d{4}$/, 'O número de telefone deve estar no formato (XX) XXXX-XXXXX'),
-    emergency_contact: Yup.string().optional().matches(/^[a-zA-Z\s]+$/, 'O contato de emergência deve conter apenas letras e espaços'),
+    emergency_contact: Yup.string().optional().matches(/^[a-zA-Z\u00C0-\u017F\s]+$/, 'O contato de emergência deve conter apenas letras e espaços'),
     allergies_list: Yup.string().optional(),
     specific_care_list: Yup.string().optional(),
     health_insurance_plan: Yup.string().optional().matches(/^[a-zA-Z\s]+$/, 'O plano de saúde deve conter apenas letras e espaços')
