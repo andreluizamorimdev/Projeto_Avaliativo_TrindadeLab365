@@ -22,11 +22,7 @@ const doctorSchema = Yup.object().shape({
     education_institution: Yup.string()
       .required('A instituição de ensino da formação é obrigatória'),
     crm_uf: Yup.string()
-      .required('O cadastro do CRM/UF é obrigatório')
-      .test('is-valid-uf', 'UF inválido', (uf) => {
-          const ufs = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'];
-          return !uf || ufs.includes(uf.toUpperCase());
-      }),
+      .required('O cadastro do CRM/UF é obrigatório'),
     clinical_specialization: Yup.string()
       .required('A especialização clínica é obrigatória')
       .oneOf(['CLINICO_GERAL', 'ANESTESISTA', 'DERMATOLOGIA', 'GINECOLOGIA', 'NEUROLOGIA', 'PEDIATRIA', 'PSIQUIATRIA', 'ORTOPEDIA'], 'A especialização clínica deve ser CLINICO_GERAL, ANESTESISTA, DERMATOLOGIA, GINECOLOGIA, NEUROLOGIA, PEDIATRIA, PSIQUIATRIA, ORTOPEDIA'),

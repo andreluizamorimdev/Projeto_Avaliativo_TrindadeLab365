@@ -7,10 +7,7 @@ const updateDoctorSchema = Yup.object().shape({
     cpf: Yup.string().optional().matches(/^\d{11}$/, 'O CPF deve conter apenas números e ter 11 dígitos'),
     phone_number: Yup.string().optional().matches(/^\(\d{2}\)\s\d{4,5}-?\d{4}$/, 'O número de telefone deve ter o formato (XX) XXXX-XXXX ou (XX) XXXXX-XXXX'),
     education_institution: Yup.string().optional().matches(/^[a-zA-Z\s]+$/, 'A instituição de ensino da formação deve conter apenas letras e espaços'),
-    crm_uf: Yup.string().optional().test('is-valid-uf', 'UF inválido', (uf) => {
-        const ufs = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'];
-        return !uf || ufs.includes(uf.toUpperCase());
-    }),
+    crm_uf: Yup.string().optional(),
     clinical_specialization: Yup.string().optional().oneOf(['CLINICO_GERAL', 'ANESTESISTA', 'DERMATOLOGIA', 'GINECOLOGIA', 'NEUROLOGIA', 'PEDIATRIA', 'PSIQUIATRIA', 'ORTOPEDIA'], 'A especialização clínica deve ser CLINICO_GERAL, ANESTESISTA, DERMATOLOGIA, GINECOLOGIA, NEUROLOGIA, PEDIATRIA, PSIQUIATRIA, ORTOPEDIA')
   });
 
