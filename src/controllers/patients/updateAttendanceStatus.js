@@ -21,7 +21,7 @@ async function updateAttendanceStatus(request, response) {
         }
 
         //validar os dados usando o schema do yup
-        await attendanceStatusUpdateSchema.validate(request.body, { abortEarly: false });
+        await attendanceStatusUpdateSchema.validate(attendance_status, { abortEarly: false });
 
         patientInDatabase.attendance_status = attendance_status;
 
