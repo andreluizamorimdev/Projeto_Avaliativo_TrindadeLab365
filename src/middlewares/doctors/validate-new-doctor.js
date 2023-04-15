@@ -20,7 +20,8 @@ const doctorSchema = Yup.object().shape({
     phone_number: Yup.string()
       .matches(/^\(\d{2}\)\s\d{4,5}-?\d{4}$/, 'O número de telefone deve ter o formato (XX) XXXX-XXXX ou (XX) XXXXX-XXXX'),
     education_institution: Yup.string()
-      .required('A instituição de ensino da formação é obrigatória'),
+      .required('A instituição de ensino da formação é obrigatória')
+      .matches(/^[a-zA-Z\s]+$/, 'A instituição de ensino da formação deve conter apenas letras e espaços'),
     crm_uf: Yup.string()
       .required('O cadastro do CRM/UF é obrigatório'),
     clinical_specialization: Yup.string()
