@@ -8,6 +8,14 @@ const MedicAttendance = connection.define('medic_attendance', {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true
+    },
+    patient_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    doctor_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false
     }
 });
 

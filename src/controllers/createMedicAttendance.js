@@ -4,8 +4,8 @@ const Patient = require("../models/patient");
 const Doctor = require("../models/doctor");
 
 const medicAttendanceSchema = Yup.object().shape({
-    patient_id: Yup.number().integer('Id do paciente deve ser um número inteiro').positive('Id do paciente deve ser um número positivo').required('Id do paciente é obrigatório'),
-    doctor_id: Yup.number().required('Id do médico é obrigatório').integer('Id do médico deve ser um número inteiro').positive('Id do médico deve ser um número positivo')
+    patient_id: Yup.number('Id do paciente deve ser um número').integer('Id do paciente deve ser um número inteiro').positive('Id do paciente deve ser um número positivo').required('Id do paciente é obrigatório'),
+    doctor_id: Yup.number('Id do médico deve ser um número').required('Id do médico é obrigatório').integer('Id do médico deve ser um número inteiro').positive('Id do médico deve ser um número positivo')
 });
 
 async function createMedicAttendance(request, response) {
