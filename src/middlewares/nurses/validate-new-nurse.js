@@ -20,7 +20,7 @@ const nurseSchema = Yup.object().shape({
     phone_number: Yup.string()
         .matches(/^\(\d{2}\)\s\d{4,5}-?\d{4}$/, 'O número de telefone deve ter o formato (XX) XXXX-XXXX ou (XX) XXXXX-XXXX'),
     education_institution: Yup.string()
-        .required('A instituição de ensino da formação é obrigatória'),
+        .required('A instituição de ensino da formação é obrigatória').matches(/^[a-zA-Z\s]+$/, 'A instituição de ensino da formação deve conter apenas letras e espaços'),
     cofen_uf: Yup.string()
         .required('O campo cofen/uf é obrigatório')
         .matches(/^[A-Z]{2}\d{10}$/, 'O campo cofen/uf deve estar no formato UF1234567890')
