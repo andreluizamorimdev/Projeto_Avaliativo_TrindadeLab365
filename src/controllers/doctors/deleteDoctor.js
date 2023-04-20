@@ -10,6 +10,10 @@ async function deleteDoctor(request, response) {
             return response.status(404).json({ message: 'Médico(a) não foi encontrado(a)' });
         }
 
+        if(doctorInDatabase.total_attendances > 0 ) {
+            return response.status(409).json({ message: 'Médico(a) possui atendimentos realizados cadastrados'});
+        }
+
         await Doctor.destroy({ where: { id: id } });
         response.status(204).json();
 
